@@ -1,0 +1,14 @@
+/*selector {
+    property: value;
+}*/
+h1 {
+    color: #D10F00;
+}
+
+li {
+    color: rgb(131,117,118);
+}
+
+h4 {
+    color: rgba(167,12,0,.6);
+}
