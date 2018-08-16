@@ -1,0 +1,40 @@
+--Numbers--
+4
+9.3
+-10
+
+-We can do some math-
+4 + 10; -> 14
+10 - 8; -> 2
+5 * 6; -> 30
+1 / 5; -> 0.2
+10 % 3; -> 1
+
+--Strings--
+"Hello World!";
+'Bye World!';
+
+
+-Concatenation-
+"Charlie" + "Brown"; -> "CharlieBrown"
+
+-Escaped Characters-
+"She said \"Goodbye!\"";
+"To see a backslash: \\";
+
+-length-
+"Hello".length; -> 5
+
+-Access individual Characters-
+"Hello"[0]; -> "H"
+"Hello"[4]; -> "o"
+
+--Booleans--
+true;
+false;
+
+--null--
+null;
+
+--undefined--
+undefined;

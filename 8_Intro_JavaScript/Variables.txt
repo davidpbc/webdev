@@ -1,0 +1,42 @@
+-- Note --
+In modern JavaScript the declaration of a variable is:
+let number = 5;
+To use this, add \"use strict";\ to the start of a JavaScript file
+
+For the course we'll use the old behavior of JavaScript with declaration:
+var number = 5;
+
+--Variable Declaration--
+var yourVariableName = yourValue;
+
+-Variables can store the Primary Types of values-
+var name = "Rusty";
+var secretNumber = 73;
+var isDog = true;
+
+-Recall the stored value-
+var name = "Rusty";
+"hello there " + name; -> "Hello there Rusty"
+
+var num = 37;
+num + 3 + 10; -> 50
+
+-Update Variable (supports different types)-
+var name = "Robert";
+name = "Bobby";
+name = 53;
+
+var age; -> it's undefined util initialized
+var number = null;
+age == number; -> true
+
+//Comment in JavaScript
+
+--Method alert--
+alert("Hello World!"); -> Shows a popup message with Hello World!
+
+--Method console.log--
+console.log(45*2); -> prints 90 in console
+
+--Method prompt--
+var name = prompt("What's your name"); -> Shows a popup message with an input and stores it on variable name
