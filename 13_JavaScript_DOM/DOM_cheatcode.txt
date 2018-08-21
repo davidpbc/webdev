@@ -1,0 +1,51 @@
+-- Main JavaScript Element Selectors --
+
+document.getElementById()
+Takes an id name (string) and returns the only enlement with that id.
+
+document.getElementsByClassName()
+Takes a class name and returns a list with every element with that class. Not an array but a node list.
+
+document.getElementsByTagName()
+Takes a tag name and returns a list of elements with that tag name.
+
+document.querySelector()
+Returns the first element that matches with a CSS-Style selector.
+
+document.querySelectorAll()
+Return all elements that matches with a CSS-Style selector.
+
+-- Manipulating Elements --
+- style -
+Is an object that contains the style of certain element, can be accessed and manipulated directly:
+
+  element.style.color = "blue";
+  element.style.border = "5px solid red"
+
+- classList -
+A read-only list that contains the classes of a given element.
+
+  element.classList.add("some-class");
+  adds a class to the element
+
+  element.classList.remove("some-class");
+  Removes class from the element
+
+  element.classList.toggle("some-class");
+  Adds or removes the class of an element
+
+- textContent -
+Returns a string of all the text contained in a given element, this text doesn't includes html tags
+
+  element.textContent = "blah blah blah ..."
+
+- innerHTML -
+Similar to textContent, except it returns a string of all the HTML contained in a given element.
+
+  element.innerHTML = "blah <strong>blah</strong>strong ..."
+
+- getAttribute("attribute") -
+Takes an attribute name and returns the attribute that matches that name
+
+- setAttribute("attribute", "value") -
+Adds or replaces the value of the attribute name passed with the value passed.
