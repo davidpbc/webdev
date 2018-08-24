@@ -1,0 +1,26 @@
+div {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 1.66%;
+  border-radius: 15%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.out {
+  color: white;
+  background-color: steelblue;
+}
+
+.in {
+  color: white;
+  background-color: #AA0000;
+  display: none;
+}
+
+.toggle {
+  background-color: darkgreen;
+}
