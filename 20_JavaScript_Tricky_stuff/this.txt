@@ -1,0 +1,167 @@
+-- Rules for 'this' --
+1. If this is used outside of an object, it will take the value of the Global Object (window in the case of a browser).
+
+Example:
+
+console.log(this) // window...
+
+2. If this is used inside of an object, it will take the value of the closest parent object. (the object in which is declared).
+
+Example:
+
+var person = {
+  firstName: "Dave",
+  sayHi: function() {
+    return "Hi " + firstName;
+  },
+  determineContext: function() {
+    return this === person;
+  },
+  dog = {
+    firstName: "Mandy",
+    sayHi: function(){
+      return "Hi " + firstName;
+    },
+    determineContext: function() {
+      return this === person;
+    },
+  }
+}
+
+person.sayHi() // "Hi Dave"
+person.determineContext() // true
+
+person.dog.sayHi() // "Hi Mandy"
+person.dog.determineContext() // false
+
+3. Explicit Binding: explicitly set the this variable to a certain value.
+
+  Name of Method        Parameters                Invoke
+                                                  immediately?
+  Call                  thisArg, a, b, c, ...     Yes
+  Apply                 thisArg, [a,b,c,...]      Yes
+  Bind                  thisArg, a, b, c, ...     No
+
+  Example:
+
+  Call:
+
+  person.sayHi() // "Hi Dave"
+  person.determineContext() // true
+  person.dog.sayHi.call(person) // "Hello Dave"
+  person.dog.determineContext.call(person) // true
+
+
+  var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+      return "Hi " + this.name;
+    },
+    addNumbers: function(a,b,c,d){
+      return this.firstName + " just calculated: " + (a+b+c+d);
+    },
+  }
+
+  var elie = {
+    firstName: "Elie"
+  }
+
+  colt.sayHi()
+  // "Hi Colt"
+
+  colt.sayHi.call(elie)
+  // "Hi Elie"
+
+  colt.addNumbers(1,2,3,4)
+  // "Colt just calculated 10"
+
+  colt.addNumbers.call(elie,1,2,3,4)
+  // "Elie just calculated 10"
+
+  Apply:
+
+  var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+      return "Hi " + this.name;
+    },
+    addNumbers: function(a,b,c,d){
+      return this.firstName + " just calculated: " + (a+b+c+d);
+    },
+  }
+
+  var elie = {
+    firstName: "Elie"
+  }
+
+  colt.sayHi()
+  // "Hi Colt"
+
+  colt.sayHi.apply(elie)
+  // "Hi Elie"
+
+  colt.addNumbers(1,2,3,4)
+  // "Colt just calculated 10"
+
+  colt.addNumbers.apply(elie,[1,2,3,4])
+  // "Elie just calculated 10"
+
+  Bind:
+
+  var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+      return "Hi " + this.name;
+    },
+    addNumbers: function(a,b,c,d){
+      return this.firstName + " just calculated: " + (a+b+c+d);
+    },
+  }
+
+  var elie = {
+    firstName: "Elie"
+  }
+
+  var elieCalc = colt.addNumbers.bind(elie,1,2,3,4);
+  elieCalc()
+  // "Elie just calculated 10"
+
+  // with bind wedo not need to know all the arguments up front
+  var elieCalc2 = colt.addNumbers(elie);
+  elieCalc(1,2,3,4)
+  // Elie just calculated 10
+
+  -- Bind for Asinchronous Code --
+  var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+      // setTimeout is in the Window Object so this refers to it
+      setTimeout(function(){
+        console.log("Hi " + this.firstName);
+      }, 1000)
+    }
+  }
+
+  var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+      setTimeout(function(){
+        console.log("Hi " + this.firstName);
+      }.bind(this), 1000)
+      // With the bind, we explicitly changed this to be the colt object
+    }
+  }
+
+4. The 'new' keyword
+
+  function Person(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  var dave = new Person("David", "Padilla");
+  dave.firstName
+  // "David"
+
+  dave.lastName
+  // "Padilla"
